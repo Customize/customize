@@ -1,4 +1,4 @@
 class Admin::ApplicationController < ApplicationController
-  #layout "admin/layouts/application"
+  layout "layouts/admin/application"
 end
 
