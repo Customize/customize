@@ -9,8 +9,14 @@
 <body>
 
 <%= render "shared/admin/header" %>
-<%= render "shared/admin/sidebar" %>
-<%= yield %>
+
+<section class="col-md-2">
+  <%= render "shared/admin/sidebar" %>
+</section>
+
+<section class="col-md-10 yield">
+  <%= yield %>
+</section>
 
 </body>
 </html>

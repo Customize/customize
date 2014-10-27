@@ -1,4 +1,13 @@
-<table class="table table-bordered">
+<div class="container">
+
+<header class="col-md-12">
+  <ul class="menu">
+    <li class="title"><h4>Páginas</h4></li>
+    <li class="item"><%= link_to "Adicionar Nova" %></li>
+  </ul>
+</header>
+
+<table class="table table-bordered col-md-12">
   <% @pages.each do |page| %>
     <th>Título</th>
     <tr>
@@ -6,3 +15,5 @@
     </tr>
   <% end %>
 </table>
+
+</div>
