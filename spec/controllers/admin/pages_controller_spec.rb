@@ -22,4 +22,11 @@ RSpec.describe Admin::PagesController, type: :controller do
       end
     end
   end
+
+  describe "GET new" do
+    it "return new instance" do
+      get :new
+      expect(assigns(:page)).to be_an_instance_of(Page)
+    end
+  end
 end
