@@ -3,3 +3,14 @@ section.form {
     margin-left: 1%;
   }
 }
+
+section.form {
+  label{
+    float: left;
+    width: 100%;
+  }
+  .select select {
+    -webkit-appearance: menulist-button;
+    width: 50%;
+  }
+}
