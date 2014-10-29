@@ -3,5 +3,6 @@ Rails.application.routes.draw do
     root "static_pages#home"
 
     resources :pages
+    resources :posts
   end
 end
