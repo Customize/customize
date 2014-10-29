@@ -8,6 +8,10 @@ class Admin::PagesController < Admin::ApplicationController
     @page = Page.new
   end
 
+  def show
+    @page = Page.find(params[:id])
+  end
+
   def create
     if Page.create(page_params)
       redirect_to admin_pages_path, flash: { error: "Page created with success" }

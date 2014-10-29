@@ -30,6 +30,16 @@ RSpec.describe Admin::PagesController, type: :controller do
     end
   end
 
+  describe "GET show" do
+    before :each do
+      @page = Page.create(title: "Page Title")
+    end
+    it "return page" do
+      get :show, id: @page
+      expect(assigns(:page)).to eq(@page)
+    end
+  end
+
   describe "POST create" do
     it "create one page" do
       post :create, page: { title: "Page Title", content: "Page Content" }
