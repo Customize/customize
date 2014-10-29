@@ -29,4 +29,13 @@ RSpec.describe Admin::PagesController, type: :controller do
       expect(assigns(:page)).to be_an_instance_of(Page)
     end
   end
+
+  describe "POST create" do
+    it "create one page" do
+      post :create, page: { title: "Page Title", content: "Page Content" }
+      expect(Page.last.title).to eq("Page Title")
+      response.should redirect_to(admin_pages_path)
+      flash[:error].should include("Page created with success")      
+    end
+  end
 end
