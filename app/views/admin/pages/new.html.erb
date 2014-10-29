@@ -1,13 +1,13 @@
 <header class="sub-header col-md-12">
   <ul class="menu">
-    <li class="title"><h4>Nova Página</h4></li>
+    <li class="title"><h4>New Page</h4></li>
   </ul>
 </header>
 
 <section class="form">
   <%= form_for [:admin, @page] do |f| %>
     <ul class="text-field">
-      <%= f.text_field :title, class: "form-control" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Insert page title here" %>
     </ul>
     <ul class="text-area">
       <%= f.text_area :content, class: "form-control" %>
