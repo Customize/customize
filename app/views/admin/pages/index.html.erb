@@ -5,11 +5,17 @@
   </ul>
 </header>
 
-<table class="table table-bordered col-md-12">
-  <% @pages.each do |page| %>
-    <th>Título</th>
-    <tr>
-      <td><%= link_to page.title, edit_admin_page_path(page) %></td>
-    </tr>
-  <% end %>
-</table>
+<section class="col-md-12">
+  <table class="table col-md-12">
+    <% @pages.each do |page| %>
+      <th>Título</th>
+      <th>Author</th>
+      <th>Date</th>
+      <tr>
+        <td class="col-md-4"><%= link_to page.title, edit_admin_page_path(page) %></td>
+        <td class="col-md-2"><%= page.author%></td>
+        <td class="col-md-2"><%= page.created_at.strftime("%d/%m/%Y")%></td>
+      </tr>
+    <% end %>
+  </table>
+</section>

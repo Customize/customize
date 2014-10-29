@@ -8,7 +8,7 @@ class Admin::PagesController < Admin::ApplicationController
     @page = Page.new
   end
 
-  def show
+  def edit
     @page = Page.find(params[:id])
   end
 
