@@ -30,7 +30,20 @@ RSpec.describe Admin::PostsController, type: :controller do
       post :create, post: { title: "Title Post" }
       expect(Post.last.title).to eq("Title Post")
       response.should redirect_to(admin_posts_path)
-      flash[:success].should include("Page created with success!")
+      flash[:success].should include("Post created with success!")
+    end
+  end
+
+  describe "POST update" do
+    before :each do
+      @post = Post.create(title: "Post Title")
+    end
+
+    it "update post" do
+      post :update, id: @post, post: { title: "Post Updated!" }
+      expect(@post.reload.title).to eq("Post Updated!")
+      response.should redirect_to edit_admin_post_path(@post)
+      flash[:success].should include("Post updated with success!")
     end
   end
 end
