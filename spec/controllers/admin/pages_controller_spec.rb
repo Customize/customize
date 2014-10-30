@@ -34,6 +34,7 @@ RSpec.describe Admin::PagesController, type: :controller do
     before :each do
       @page = Page.create(title: "Page Title")
     end
+
     it "return page" do
       get :edit, id: @page
       expect(assigns(:page)).to eq(@page)
@@ -41,11 +42,24 @@ RSpec.describe Admin::PagesController, type: :controller do
   end
 
   describe "POST create" do
-    it "create one page" do
+    it "create page" do
       post :create, page: { title: "Page Title", content: "Page Content" }
       expect(Page.last.title).to eq("Page Title")
       response.should redirect_to(admin_pages_path)
-      flash[:error].should include("Page created with success")      
+      flash[:success].should include("Page created with success!")      
+    end
+  end
+
+  describe "POST update" do
+    before :each do
+      @page = Page.create(title: "Page Title")
+    end
+    
+    it "update page" do
+      post :update, id: @page, page: { title: "Title Updated" }
+      expect(@page.reload.title).to eq("Title Updated")
+      response.should redirect_to(edit_admin_page_path(@page))
+      flash[:success].should include("Page updated with success!")
     end
   end
 end
