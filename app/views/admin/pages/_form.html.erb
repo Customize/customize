@@ -2,7 +2,7 @@
   <%= form_for [:admin, @page] do |f| %>
     <ul class="select">
       <label>Mother</label>
-      <%= f.collection_select :mother, Page.all, :id, :title, include_blank: true, class: "form-control" %>
+      <%= f.collection_select :mother, @collection, :id, :title, include_blank: true, class: "form-control" %>
     </ul>
     <ul class="text-field">
       <label>Title</label>
