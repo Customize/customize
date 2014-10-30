@@ -31,15 +31,15 @@ class Admin::PagesController < Admin::ApplicationController
   end
 
   private
-    def page_params
-      params.require(:page).permit(:title, :content)
-    end
-
     def find_page
       @page = Page.find(params[:id])
     end
 
     def selected_collection
       @collection = Page.all.to_a - [@page]
+    end
+
+    def page_params
+      params.require(:page).permit(:title, :content, :mother)
     end
 end
