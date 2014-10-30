@@ -24,4 +24,13 @@ RSpec.describe Admin::PostsController, type: :controller do
       expect(assigns(:post)).to eq(@post)
     end
   end
+
+  describe "POST create" do
+    it "create post" do
+      post :create, post: { title: "Title Post" }
+      expect(Post.last.title).to eq("Title Post")
+      response.should redirect_to(admin_posts_path)
+      flash[:success].should include("Page created with success!")
+    end
+  end
 end
