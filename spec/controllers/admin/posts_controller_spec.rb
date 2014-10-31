@@ -15,9 +15,14 @@ RSpec.describe Admin::PostsController, type: :controller do
   end
 
   describe "GET new" do
+    before :each do
+      @page = Page.create(title: "Page Title")
+    end
+
     it "return new instance" do
       get :new
       expect(assigns(:post)).to be_an_instance_of(Post)
+      expect(assigns(:pages)).to eq([@page])
     end
   end
 

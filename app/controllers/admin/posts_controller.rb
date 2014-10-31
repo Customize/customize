@@ -8,6 +8,7 @@ class Admin::PostsController < Admin::ApplicationController
 
   def new
     @post = Post.new
+    @pages = Page.all
   end
 
   def edit
