@@ -14,6 +14,13 @@ RSpec.describe Admin::PostsController, type: :controller do
     end
   end
 
+  describe "GET new" do
+    it "return new instance" do
+      get :new
+      expect(assigns(:post)).to be_an_instance_of(Post)
+    end
+  end
+
   describe "GET show" do
     before :each do
       @post = Post.create(title: "Title Post")     

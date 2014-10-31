@@ -6,6 +6,10 @@ class Admin::PostsController < Admin::ApplicationController
     @posts = Post.all
   end
 
+  def new
+    @post = Post.new
+  end
+
   def edit
   end
 
