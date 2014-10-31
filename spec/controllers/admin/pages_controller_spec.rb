@@ -45,8 +45,8 @@ RSpec.describe Admin::PagesController, type: :controller do
     it "create page" do
       post :create, page: { title: "Page Title", content: "Page Content" }
       expect(Page.last.title).to eq("Page Title")
-      response.should redirect_to(admin_pages_path)
-      flash[:success].should include("Page created with success!")      
+      expect(response).to redirect_to(admin_pages_path)
+      expect(flash[:success]).to eq("Page created with success!")
     end
   end
 
@@ -58,8 +58,8 @@ RSpec.describe Admin::PagesController, type: :controller do
     it "update page" do
       post :update, id: @page, page: { title: "Title Updated" }
       expect(@page.reload.title).to eq("Title Updated")
-      response.should redirect_to(edit_admin_page_path(@page))
-      flash[:success].should include("Page updated with success!")
+      expect(response).to redirect_to(edit_admin_page_path(@page))
+      expect(flash[:success]).to eq("Page updated with success!")
     end
   end
 end

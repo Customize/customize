@@ -13,8 +13,8 @@
 
     <% @posts.each do |post| %>
       <tr>
-        <td class="col-md-4"><%= link_to post.title, edit_admin_page_path(post) %></td>
-        <td class="col-md-2"><%= post.author%></td>
+        <td class="col-md-4"><%= link_to post.title, edit_admin_post_path(post) %></td>
+        <td class="col-md-2"><%= %></td>
         <td class="col-md-2"><%= post.created_at.strftime("%d/%m/%Y")%></td>
       </tr>
     <% end %>

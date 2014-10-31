@@ -1,6 +1,7 @@
 class Admin::PostsController < Admin::ApplicationController
   
   before_filter :fetch_post, only: [:edit, :update, :destroy]
+  before_filter :get_pages,  only: [:new, :edit]
 
   def index
     @posts = Post.all
@@ -8,7 +9,6 @@ class Admin::PostsController < Admin::ApplicationController
 
   def new
     @post = Post.new
-    @pages = Page.all
   end
 
   def edit
@@ -24,7 +24,7 @@ class Admin::PostsController < Admin::ApplicationController
 
   def update
     if @post.update_attributes(post_params)
-      redirect_to edit_admin_post_path(@post), flash: { success: "Post updated with success!"}
+      redirect_to edit_admin_post_path(@post), flash: { success: "Post updated with success!" }
     else
       render action: 'edit'
     end
@@ -38,10 +38,14 @@ class Admin::PostsController < Admin::ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:title)
+      params.require(:post).permit(:title, :content, :page_id)
     end
 
     def fetch_post
       @post = Post.find(params[:id])
+    end
+
+    def get_pages
+      @pages = Page.all
     end
 end

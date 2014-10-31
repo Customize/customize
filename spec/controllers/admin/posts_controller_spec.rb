@@ -28,7 +28,8 @@ RSpec.describe Admin::PostsController, type: :controller do
 
   describe "GET show" do
     before :each do
-      @post = Post.create(title: "Title Post")     
+      @post = Post.create(title: "Title Post")
+      @page = Page.create(title: "Title Page")
     end
 
     it "return single post" do
