@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::ApplicationController
   
-  before_filter :fetch_post, only: [:edit, :update]
+  before_filter :fetch_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -22,6 +22,12 @@ class Admin::PostsController < Admin::ApplicationController
       redirect_to edit_admin_post_path(@post), flash: { success: "Post updated with success!"}
     else
       render action: 'edit'
+    end
+  end
+
+  def destroy
+    if @post.destroy!
+      redirect_to admin_posts_path, flash: { success: "Post deleted!"}
     end
   end
 
