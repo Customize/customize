@@ -35,6 +35,7 @@ RSpec.describe Admin::PostsController, type: :controller do
     it "return single post" do
       get :edit, id: @post
       expect(assigns(:post)).to eq(@post)
+      expect(assigns(:pages)).to eq([@pages])
     end
   end
 
