@@ -1,0 +1,7 @@
+<h1><%= @page.title %></h1>
+<ul>
+  <% @posts.each do |p| %>
+  <li><%= link_to p.title, post_path(p) %></li>
+  <% end %>
+</ul>
+<p><%= @page.content %></p>
