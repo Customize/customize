@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :pages
-  resources :posts
+  resources :pages, only: [:show]
+  resources :posts, only: [:show]
 
   namespace :admin do
     root "static_pages#home"

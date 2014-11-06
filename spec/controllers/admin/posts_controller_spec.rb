@@ -1,13 +1,13 @@
 require "rails_helper"
 
 RSpec.describe Admin::PostsController, type: :controller do
-  
-  describe "GET index" do
-    before :each do
-      @post  = Post.create(title: "Post Title")
-      @post2 = Post.create(title: "Post Title2")
-    end
+  before :each do
+    @post  = Post.create(title: "Post Title")
+    @post2 = Post.create(title: "Post Title2")
+    @page = Page.create(title: "Page Title")
+  end
 
+  describe "GET index" do
     it "return all posts" do
       get :index
       expect(assigns(:posts).to_a).to eq([@post, @post2])
@@ -15,10 +15,6 @@ RSpec.describe Admin::PostsController, type: :controller do
   end
 
   describe "GET new" do
-    before :each do
-      @page = Page.create(title: "Page Title")
-    end
-
     it "return new instance" do
       get :new
       expect(assigns(:post)).to be_an_instance_of(Post)
@@ -26,16 +22,11 @@ RSpec.describe Admin::PostsController, type: :controller do
     end
   end
 
-  describe "GET show" do
-    before :each do
-      @post = Post.create(title: "Title Post")
-      @page = Page.create(title: "Title Page")
-    end
-
+  describe "GET edit" do
     it "return single post" do
       get :edit, id: @post
       expect(assigns(:post)).to eq(@post)
-      expect(assigns(:pages)).to eq([@pages])
+      expect(assigns(:pages)).to eq([@page])
     end
   end
 
@@ -49,10 +40,6 @@ RSpec.describe Admin::PostsController, type: :controller do
   end
 
   describe "POST update" do
-    before :each do
-      @post = Post.create(title: "Post Title")
-    end
-
     it "update post" do
       post :update, id: @post, post: { title: "Post Updated!" }
       expect(@post.reload.title).to eq("Post Updated!")
@@ -62,13 +49,9 @@ RSpec.describe Admin::PostsController, type: :controller do
   end
 
   describe "POST destroy" do
-    before :each do
-      @post = Post.create(title: "Tite")
-    end
-
     it "destroy post" do
       post :destroy, id: @post
-      expect(Post.count).to eq(0)
+      expect(Post.count).to eq(1)
       expect(response).to redirect_to(admin_posts_path)
       expect(flash[:success]).to eq("Post deleted!")
     end
