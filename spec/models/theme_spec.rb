@@ -9,13 +9,13 @@ describe Theme, type: :model do
        ["lib", "themes", "minimalist", "minimalist.yml"]])
   end
 
-  describe "arrange_files" do
-    it "return arrange files hash" do
+  describe "files" do
+    it "return arranged files hash" do
       arrange = {
         themes: ["horizon", "minimalist"],
         about: ["horizon.yml", "minimalist.yml"]}
-        
-      expect(Theme.arrange_files).to eq(arrange)
+
+      expect(Theme.files).to eq(arrange)
     end
   end
 end

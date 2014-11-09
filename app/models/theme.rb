@@ -12,8 +12,7 @@ class Theme
     splited_files
   end
 
-
-  def self.arrange_files
+  def self.files
     arrange = {themes: [], about: []}
     split_files.each do |f|
       arrange[:themes] << f[2]
@@ -24,6 +23,6 @@ class Theme
   end
 
   def self.filter_data(arrange)
-   arrange = {themes: arrange[:themes].uniq, about: arrange[:about].compact} 
+    arrange = {themes: arrange[:themes].uniq, about: arrange[:about].compact} 
   end
 end
