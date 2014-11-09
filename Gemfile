@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
 group :development, :test do
+  gem 'quiet_assets'
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'database_cleaner'  
+  gem 'database_cleaner'
 end
