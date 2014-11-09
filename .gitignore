@@ -15,5 +15,8 @@
 /log/*.log
 /tmp
 
-#Ignore todo
+# Ignore todo
 /todo.txt
+
+# Ignore themes
+/lib/themes/*
