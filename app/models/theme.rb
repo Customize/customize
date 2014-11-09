@@ -1,7 +1,7 @@
 class Theme
   include Mongoid::Document
 
-  def self.split_files
+  def self.read_files
     splited_files = []
     files = Dir.glob("lib/themes/**/*")
 
@@ -12,17 +12,17 @@ class Theme
     splited_files
   end
 
-  def self.files
+  def self.arrange_files
     arrange = {themes: [], about: []}
-    split_files.each do |f|
+    read_files.each do |f|
       arrange[:themes] << f[2]
       arrange[:about]  << f[3]
     end
 
-    filter_data(arrange)
+    arrange = {themes: arrange[:themes].uniq, about: arrange[:about].compact}
   end
 
-  def self.filter_data(arrange)
-    arrange = {themes: arrange[:themes].uniq, about: arrange[:about].compact} 
+  def self.add_theme
+
   end
 end

@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe Theme, type: :model do
   before :each do
-    Theme.should_receive(:split_files).and_return(
+    Theme.should_receive(:read_files).and_return(
       [["lib", "themes", "horizon"],
        ["lib", "themes", "horizon", "horizon.yml"],
        ["lib", "themes", "minimalist"],
@@ -15,7 +15,7 @@ describe Theme, type: :model do
         themes: ["horizon", "minimalist"],
         about: ["horizon.yml", "minimalist.yml"]}
 
-      expect(Theme.files).to eq(arrange)
+      expect(Theme.arrange_files).to eq(arrange)
     end
   end
 end
