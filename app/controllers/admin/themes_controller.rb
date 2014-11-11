@@ -1,6 +1,6 @@
 class Admin::ThemesController < Admin::ApplicationController
 
   def index
-    @themes = Theme.files
+    @themes = Theme.all
   end
 end
