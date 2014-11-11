@@ -11,4 +11,12 @@ describe Admin::ThemesController, type: :controller do
       expect(assigns(:themes)).to eq([@theme])
     end
   end
+
+  describe "GET new" do
+    it "return response success" do
+      get :new
+      expect(response.status).to eq(200)
+      expect(response).to render_template("new")
+    end
+  end
 end
