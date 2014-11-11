@@ -3,7 +3,6 @@ require "yaml"
 class Theme
   include Mongoid::Document
 
-  field :folders,     type: Hash
   field :name,        type: String
   field :description, type: String
   field :author,      type: String
@@ -30,13 +29,24 @@ class Theme
     themes.uniq
   end
 
- def self.read_info
-  themes = []
-  list_themes.each do |t|
-    file = YAML.load_file("lib/themes/#{t}/about.yml")
-    themes.push({name: file["name"], description: file["description"], author: file["author"], site: file["site"], email: file["email"], version: file["version"]})
+  def self.read_info
+    themes = []
+    list_themes.each do |t|
+      file = YAML.load_file("lib/themes/#{t}/about.yml")
+      themes.push({name: file["name"], description: file["description"], author: file["author"], site: file["site"], email: file["email"], version: file["version"]})
+    end
+    themes
   end
 
-  themes
- end
+  def self.save_themes
+    read_info.each do |k, v|
+      theme = Theme.create(
+        name:        k[:name],
+        description: k[:description],
+        author:      k[:author],
+        site:        k[:site],
+        email:       k[:email],
+        version:     k[:version])
+    end
+  end
 end

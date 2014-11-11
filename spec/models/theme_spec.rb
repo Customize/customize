@@ -18,15 +18,14 @@ describe Theme, type: :model do
   describe "read_info" do
     it "parse information of themes and put on hash" do
       info = [{:name=>"Horizon", :description=>"lorem ipsum dolor sit", :author=>"Londerson", :site=>"londerson.github.io", :email=>"londerson@gmail.com", :version=>0.1}, {:name=>"Minimalist", :description=>"lorem ipsum dolor sit", :author=>"Londerson", :site=>"londerson.github.io", :email=>"londerson@gmail.com", :version=>0.1}]
-
       expect(Theme.read_info).to eq(info)
     end
   end
 
   describe "save_themes" do
-    xit "save themes" do
+    it "save themes" do
       Theme.save_themes
-      # expect(Theme.count).to eq(2)
+      expect(Theme.count).to eq(2)
     end
   end
 end
