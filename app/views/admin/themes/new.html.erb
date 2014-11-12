@@ -1,0 +1,12 @@
+<header class="sub-header col-md-12">
+  <ul class="menu">
+    <li class="title"><h4>Themes</h4></li>
+  </ul>
+</header>
+
+<section class="col-md-11 form-new-template">
+  <%= form_tag("/admin/themes/") do %>
+    <%= file_field_tag :zip %>
+    <%= submit_tag "Confirm", class: "btn btn-primary" %>
+  <% end %>
+</section>

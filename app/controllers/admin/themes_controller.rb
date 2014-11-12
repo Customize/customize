@@ -5,6 +5,9 @@ class Admin::ThemesController < Admin::ApplicationController
   end
 
   def new
-    
+    @theme = Theme.new
+  end
+
+  def create
   end
 end
