@@ -2,6 +2,8 @@ require "yaml"
 
 class Theme
   include Mongoid::Document
+  mount_uploader :file, FileUploader
+
 
   field :name,        type: String
   field :description, type: String

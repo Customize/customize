@@ -5,8 +5,8 @@
 </header>
 
 <section class="col-md-11 form-new-template">
-  <%= form_tag("/admin/themes/") do %>
-    <%= file_field_tag :zip %>
-    <%= submit_tag "Confirm", class: "btn btn-primary" %>
+  <%= form_for [:admin, @theme] do |f| %>
+    <%= f.file_field :file %>
+    <%= f.submit "Confirm", class: "btn btn-primary" %>
   <% end %>
 </section>

@@ -20,3 +20,6 @@
 
 # Ignore themes
 /lib/themes/*
+
+#Ignore files uploads
+/public/uploads/tmp/*
