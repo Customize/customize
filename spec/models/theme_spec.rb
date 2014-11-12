@@ -22,10 +22,39 @@ describe Theme, type: :model do
     end
   end
 
+  describe "get_saved_themes" do
+    before :each do
+      Theme.save_themes
+    end
+
+    it "return names of themes saved" do
+      names = Theme.get_saved_themes
+      expect(names).to eq(["Horizon", "Minimalist"])
+    end
+  end
+
   describe "save_themes" do
+
     it "save themes" do
       Theme.save_themes
       expect(Theme.count).to eq(2)
+    end
+
+    context "when have themes saved" do
+      before :each do
+        Theme.should_receive(:read_files).and_return(
+          [["lib", "themes", "horizon"],
+           ["lib", "themes", "horizon", "horizon.yml"],
+           ["lib", "themes", "minimalist"],
+           ["lib", "themes", "minimalist", "minimalist.yml"]])
+
+        Theme.save_themes
+        Theme.save_themes
+      end
+
+      it "not save repeated themes" do
+        expect(Theme.count).to eq(2)
+      end
     end
   end
 end

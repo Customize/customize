@@ -40,15 +40,21 @@ class Theme
     themes
   end
 
+  def self.get_saved_themes
+    Theme.all.map { |t| t.name }
+  end
+
   def self.save_themes
     read_info.each do |k, v|
-      theme = Theme.create(
-        name:        k[:name],
-        description: k[:description],
-        author:      k[:author],
-        site:        k[:site],
-        email:       k[:email],
-        version:     k[:version])
+      unless get_saved_themes.include? k[:name]
+        theme = Theme.create(
+          name:        k[:name],
+          description: k[:description],
+          author:      k[:author],
+          site:        k[:site],
+          email:       k[:email],
+          version:     k[:version])
+      end
     end
   end
 end
