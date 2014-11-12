@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     root "static_pages#home"
     resources :pages
     resources :posts
+    resources :themes, only: [:index, :new, :create]
   end
 end

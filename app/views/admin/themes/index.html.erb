@@ -1,0 +1,14 @@
+<header class="sub-header col-md-12">
+  <ul class="menu">
+    <li class="title"><h4>Themes</h4></li>
+    <li class="item"><%= link_to "Adicionar Novo", new_admin_theme_path %></li>
+  </ul>
+</header>
+
+<section class="col-md-11">
+  <% @themes.each do |theme| %>
+    <div class="col-md-4">
+      <h1><%= theme.name %></h1>
+    </div>
+  <% end %>
+</section>

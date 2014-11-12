@@ -15,6 +15,14 @@
 /log/*.log
 /tmp
 
-#Ignore todo
+# Ignore todo
 /todo.txt
+
+# Ignore OSX useless files 
 lib/themes/.DS_Store
+
+# Ignore themes
+/lib/themes/*
+
+#Ignore files uploads
+/public/uploads/tmp/*
