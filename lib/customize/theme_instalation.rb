@@ -18,4 +18,13 @@ class ThemeInstalation
     end
     themes.uniq    
   end
+
+  def read_info(list_themes)
+    themes = []
+    list_themes.each do |t|
+      file = YAML.load_file("lib/themes/#{t}/about.yml")
+      themes.push({name: file["name"], description: file["description"], author: file["author"], site: file["site"], email: file["email"], version: file["version"]})
+    end
+    themes
+  end
 end
