@@ -1,3 +1,5 @@
+require "yaml"
+
 class ThemeInstalation
 
   def split_files(dir)
@@ -7,7 +9,6 @@ class ThemeInstalation
     files.each do |f|
       splited_files << f.split("/")
     end
-
     splited_files
   end
 

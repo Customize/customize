@@ -1,4 +1,5 @@
 class Admin::ThemesController < Admin::ApplicationController
+  require 'zip'
 
   def index
     @themes = Theme.all
