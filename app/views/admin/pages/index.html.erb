@@ -1,21 +1,21 @@
-<header class="sub-header col-md-12">
+<header class="sub-header">
   <ul class="menu">
     <li class="title"><h4>Pages</h4></li>
     <li class="item"><%= link_to "Adicionar Nova", new_admin_page_path %></li>
   </ul>
 </header>
 
-<section class="col-md-11">
-  <table class="admin table col-md-12">
+<section>
+  <table class="admin table">
     <th>Título</th>
     <th>Author</th>
     <th>Date</th>
 
     <% @pages.each do |page| %>
       <tr>
-        <td class="col-md-4"><%= link_to page.title, edit_admin_page_path(page) %></td>
-        <td class="col-md-2"><%= page.author%></td>
-        <td class="col-md-2"><%= page.created_at.strftime("%d/%m/%Y")%></td>
+        <td><%= link_to page.title, edit_admin_page_path(page) %></td>
+        <td><%= page.author%></td>
+        <td><%= page.created_at.strftime("%d/%m/%Y")%></td>
       </tr>
     <% end %>
   </table>

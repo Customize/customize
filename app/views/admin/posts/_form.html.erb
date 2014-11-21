@@ -1,8 +1,8 @@
-<section class="form col-md-10">
+<section class="form">
   <%= form_for [:admin, @post] do |f| %>
     <ul class="select">
       <label>Page</label>
-      <%= f.collection_select :page_id, @pages, :id, :title, include_blank: true, class: "form-control" %>
+      <%= f.collection_select :page_id, @pages, :id, :title, include_blank: true  %>
     </ul>
     <ul class="text-field">
       <label>Title</label>
@@ -13,7 +13,7 @@
       <%= f.text_area :content, class: "form-control", placeholder: "Insert content post here" %>
     </ul>
     <ul class="submit">
-      <%= f.submit "Publish", class: "btn btn-primary" %>
+      <%= f.submit "Publish" %>
     </ul>
   <% end %>
 </section>
