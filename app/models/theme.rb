@@ -1,5 +1,5 @@
 require "yaml"
-require "./lib/customize/theme_instalation"
+require "./lib/customize/theme/settings"
 
 class Theme
   include Mongoid::Document
@@ -19,11 +19,12 @@ class Theme
 
   def self.save_themes
     themes_path = "lib/themes/**/*"
-    splited_files = ThemeInstalation.new.split_files(themes_path)
-    listed_themes = ThemeInstalation.new.list_themes(splited_files)
-    themes_info = ThemeInstalation.new.read_info(listed_themes)
+    settings = Customize::Theme::Settings.new
+    settings[:files] = settings.split_files(themes_path)
+    settings[:themes_list] = settings.list_themes(settings[:files])
+    settings[:themes_info] = settings.read_info(settings[:themes_list])
 
-    themes_info.each do |k, v|
+    settings[:themes_info].each do |k, v|
       unless get_saved_themes.include? k[:name]
         theme = Theme.create(
           name:        k[:name],
