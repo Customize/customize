@@ -3,7 +3,6 @@ require "yaml"
 module Customize
   module Theme
     class Settings < Hash
-
       def split_files(dir)
         splited_files = []
         files = Dir.glob(dir)
@@ -19,7 +18,7 @@ module Customize
         splited_files.each do |f|
           themes.push(f[2])
         end
-        themes.uniq    
+        themes.uniq
       end
 
       def read_info(list_themes)
@@ -30,7 +29,6 @@ module Customize
         end
         themes
       end
-
     end
   end
 end
